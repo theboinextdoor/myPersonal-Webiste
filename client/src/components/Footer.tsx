@@ -29,10 +29,10 @@ const Footer = () => {
           </Link>
         </p>
         <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start gap-8 text-2xl text-white">
-          <LuFacebook className="cursor-pointer hover:text-cyan-400 hover:shadow-cyan-400 hover:shadow-xl hover:drop-shadow-xl hover:translate-y-1 hover:scale-150 hover:ease-in-out hover:duration-700 hover:transition-transform"/>
-          <BsTwitterX className="cursor-pointer hover:text-cyan-400 hover:shadow-cyan-400 hover:shadow-xl hover:drop-shadow-xl hover:translate-y-1 hover:scale-150 hover:ease-in-out hover:duration-700 hover:transition-transform"/>
-          <SlSocialInstagram className="cursor-pointer hover:text-cyan-400 hover:shadow-cyan-400 hover:shadow-xl hover:drop-shadow-xl hover:translate-y-1 hover:scale-150 hover:ease-in-out hover:duration-700 hover:transition-transform"/>
-          <GrLinkedinOption className="cursor-pointer hover:text-cyan-400 hover:shadow-cyan-400 hover:shadow-xl hover:drop-shadow-xl hover:translate-y-1 hover:scale-150 hover:ease-in-out hover:duration-700 hover:transition-transform"/>
+         <Link href="">  <LuFacebook className="cursor-pointer hover:text-cyan-400 hover:shadow-cyan-400 hover:shadow-xl hover:drop-shadow-xl hover:translate-y-1 hover:scale-150 hover:ease-in-out hover:duration-700 hover:transition-transform"/></Link>
+          <Link href=''><BsTwitterX className="cursor-pointer hover:text-cyan-400 hover:shadow-cyan-400 hover:shadow-xl hover:drop-shadow-xl hover:translate-y-1 hover:scale-150 hover:ease-in-out hover:duration-700 hover:transition-transform"/></Link>
+          <Link href=''><SlSocialInstagram className="cursor-pointer hover:text-cyan-400 hover:shadow-cyan-400 hover:shadow-xl hover:drop-shadow-xl hover:translate-y-1 hover:scale-150 hover:ease-in-out hover:duration-700 hover:transition-transform"/></Link>
+          <Link href=''><GrLinkedinOption className="cursor-pointer hover:text-cyan-400 hover:shadow-cyan-400 hover:shadow-xl hover:drop-shadow-xl hover:translate-y-1 hover:scale-150 hover:ease-in-out hover:duration-700 hover:transition-transform"/></Link>
         </span>
       </div>
     </footer>
