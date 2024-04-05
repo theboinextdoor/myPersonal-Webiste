@@ -1,9 +1,15 @@
+
 import ProjectCard from "@/components/ProjectCard";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
+import { client } from "@/sanity/client";
+import { SanityDocument } from "next-sanity";
 
-const ProjectPage = () => {
+const EVENTS_QUERY = `*[_type == "project"]`;
+const ProjectPage = async () => {
+  const events = await client.fetch<SanityDocument[]>(EVENTS_QUERY);
+  console.log(events)
+  
   return (
     <section className="text-gray-600 body-font pt-14">
       <div className="container px-5 pt-24 mx-auto">
@@ -48,16 +54,25 @@ const ProjectPage = () => {
         </div>
       </div>
       <div className="flex flex-wrap px-4 mx-4 items-center justify-center gap-6">
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
-        <ProjectCard />
+        {
+          events.map((val , index) => {
+            return(
+              <ProjectCard 
+                key={index} 
+                thumbnail={val.thumbnail}
+                projectLanguage={val.projectLanguage}
+                projectTitle={val.projectTitle}
+                description={val.description}
+                date={val.date}
+                websiteurl={val.websiteurl}
+                />
+            )
+          })
+        }
       </div>
     </section>
   );
 };
+
 
 export default ProjectPage;
