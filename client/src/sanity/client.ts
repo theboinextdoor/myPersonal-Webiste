@@ -14,4 +14,10 @@ export function urlFor(source:any) {
   return builder.image(source)
 }
 
+// export async function getStaticProps(){
+//   const project = await client.fetch('*[_type == "project"]');
+//   return { props: { project } };
+// };
+
+
 

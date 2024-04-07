@@ -1,15 +1,31 @@
-
+// "use client"
 import ProjectCard from "@/components/ProjectCard";
 import Image from "next/image";
-import React from "react";
 import { client } from "@/sanity/client";
-import { SanityDocument } from "next-sanity";
+// import { SanityDocument } from "next-sanity";
 
-const EVENTS_QUERY = `*[_type == "project"]`;
+interface IProject {
+  _id: string;
+  thumbnail: string;
+  projectTitle: string;
+  projectLanguage: string;
+  description: any;
+  date: string;
+  websiteurl: string;
+}
+
+async function getData() {
+  try {
+    const query = `*[_type == "project"]`;
+    const data = await client.fetch(query);
+    return data as IProject;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 const ProjectPage = async () => {
-  const events = await client.fetch<SanityDocument[]>(EVENTS_QUERY);
-  console.log(events)
-  
+  const data = (await getData()) as unknown as IProject[];
   return (
     <section className="text-gray-600 body-font pt-14">
       <div className="container px-5 pt-24 mx-auto">
@@ -54,25 +70,22 @@ const ProjectPage = async () => {
         </div>
       </div>
       <div className="flex flex-wrap px-4 mx-4 items-center justify-center gap-6">
-        {
-          events.map((val , index) => {
-            return(
-              <ProjectCard 
-                key={index} 
-                thumbnail={val.thumbnail}
-                projectLanguage={val.projectLanguage}
-                projectTitle={val.projectTitle}
-                description={val.description}
-                date={val.date}
-                websiteurl={val.websiteurl}
-                />
-            )
-          })
-        }
+        {data?.map((val: any, index: any) => {
+          return (
+            <ProjectCard
+              key={index}
+              thumbnail={val.thumbnail}
+              projectLanguage={val.projectLanguage}
+              projectTitle={val.projectTitle}
+              description={val.description}
+              date={val.date}
+              websiteurl={val.websiteurl}
+            />
+          );
+        })}
       </div>
     </section>
   );
 };
-
 
 export default ProjectPage;
